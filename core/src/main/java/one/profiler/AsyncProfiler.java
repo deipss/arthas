@@ -37,6 +37,10 @@ public class AsyncProfiler implements AsyncProfilerMXBean {
         return getInstance(null);
     }
 
+
+    /**
+     * 通过so文件的绝对路径，获取一个profiler的实例
+     */
     public static synchronized AsyncProfiler getInstance(String libPath) {
         if (instance != null) {
             return instance;
@@ -275,6 +279,11 @@ public class AsyncProfiler implements AsyncProfilerMXBean {
             }
         }
     }
+
+    /**
+     * 以下4个方法是调用的本地库，
+     * 具体的方法参数，要查看cpp代码
+     */
 
     private native void start0(String event, long interval, boolean reset) throws IllegalStateException;
 

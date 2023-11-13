@@ -255,6 +255,7 @@ public class ProfilerCommand extends AnnotatedCommand {
             if (codeSource != null) {
                 try {
                     File bootJarPath = new File(codeSource.getLocation().toURI().getSchemeSpecificPart());
+                    // 加载so文件
                     File soFile = new File(bootJarPath.getParentFile(), profierSoPath);
                     if (soFile.exists()) {
                         libPath = soFile.getAbsolutePath();
@@ -486,6 +487,10 @@ public class ProfilerCommand extends AnnotatedCommand {
         }
     }
 
+
+    /**
+     * profile的.so文件路径
+     */
 
     private AsyncProfiler profilerInstance() {
         if (profiler != null) {
